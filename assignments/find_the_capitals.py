@@ -1,10 +1,18 @@
-def capital(capitals): 
-    sentences = []
+def capital(capitals):
+    result = []
     for item in capitals:
-        
-        place_type = 'state' if 'state' in item else 'country'
-        place_name = item[place_type]
-        capital_name = item['capital']
-        
-        sentences.append(f"The capital of {place_name} is {capital_name}")
-    return sentences
+        if 'state' in item:
+            sentence = "The capital of " + item['state'] + " is " + item['capital']
+        else:
+            sentence = "The capital of " + item['country'] + " is " + item['capital']
+        result.append(sentence)
+    return result
+
+
+if __name__ == "__main__":
+    print(capital([{'state': 'Maine', 'capital': 'Augusta'}]))
+    print(capital([{'country': 'Spain', 'capital': 'Madrid'}]))
+    print(capital([
+        {'state': 'Maine', 'capital': 'Augusta'},
+        {'country': 'Spain', 'capital': 'Madrid'}
+    ]))
